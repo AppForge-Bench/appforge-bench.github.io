@@ -29,6 +29,8 @@ theme:
 
 plugins:
   - search
+  - table-reader:
+      data_path: docs 
 
 markdown_extensions:
   - admonition

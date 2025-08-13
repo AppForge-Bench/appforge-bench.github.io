@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: '3.x'
       - run: pip install mkdocs-material
-      - run: mkdocs build --strict
+      - run: pip install mkdocs-material mkdocs-table-reader-plugin
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
