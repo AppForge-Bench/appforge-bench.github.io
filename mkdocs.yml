@@ -1,0 +1,55 @@
+site_name: AppForge
+site_description: Benchmarking LLMs for Android app generation
+site_url: https://appforge-bench.github.io/
+repo_name: AppForge-Bench/appforge-bench.github.io
+repo_url: https://github.com/AppForge-Bench/appforge-bench.github.io
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - scheme: default
+      primary: green
+      accent: green
+    - scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.footer
+    - content.tabs.link
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+
+nav:
+  - Overview: index.md
+  - Getting Started: getting-started.md
+  - User Guides:
+      - Evaluation: evaluation.md
+      - Datasets: datasets.md
+  - Reference:
+      - API / CLI: api.md
+  - Leaderboard: leaderboard.md
+  - FAQ: faq.md
+  - Cite: cite.md
