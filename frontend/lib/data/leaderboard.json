@@ -1,0 +1,53 @@
+{
+  "datasets": [
+    "Bash Only",
+    "Verified",
+    "Lite",
+    "Full",
+    "Multimodal"
+  ],
+  "filters": {
+    "scaffold": [
+      "Open Scaffold",
+      "Closed Scaffold"
+    ],
+    "tags": [
+      "All Tags",
+      "RAG",
+      "Agent",
+      "CodeGen"
+    ]
+  },
+  "rows": [
+    {
+      "model": "AppForge-MiniAgent 0.1",
+      "dataset": "Verified",
+      "resolved": 41.7,
+      "notes": "Open scaffold; minimal agent"
+    },
+    {
+      "model": "AppForge-Toolformer",
+      "dataset": "Lite",
+      "resolved": 28.4,
+      "notes": "Closed scaffold; tool-use"
+    },
+    {
+      "model": "VisionAgent-Alpha",
+      "dataset": "Multimodal",
+      "resolved": 16.2,
+      "notes": "Open scaffold; vision"
+    },
+    {
+      "model": "Baseline-RAG",
+      "dataset": "Full",
+      "resolved": 12.0,
+      "notes": "Open scaffold; RAG"
+    },
+    {
+      "model": "CodeGen-Basic",
+      "dataset": "Bash Only",
+      "resolved": 9.5,
+      "notes": "Bash environment"
+    }
+  ]
+}

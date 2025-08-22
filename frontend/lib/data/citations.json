@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "title": "AppForge Bench: Evaluating LLMs on Real-World Mobile App Tasks",
+      "bibtex": "@inproceedings{appforge2025, title={{AppForge} Bench: Evaluating LLMs on Real-World Mobile App Tasks}, author={Your Team}, booktitle={Conference}, year={2025}, url={https://appforge-bench.github.io} }",
+      "apa": "Your Team. (2025). AppForge Bench: Evaluating LLMs on Real-World Mobile App Tasks. In Conference. https://appforge-bench.github.io",
+      "mla": "Your Team. \"AppForge Bench: Evaluating LLMs on Real-World Mobile App Tasks.\" Conference, 2025."
+    }
+  ]
+}
