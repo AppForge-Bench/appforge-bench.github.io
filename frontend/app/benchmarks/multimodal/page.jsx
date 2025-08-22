@@ -24,7 +24,7 @@ export default function Page() {
             <li>Model weights (optional)</li>
           </ul>
           <h2 className="h2">Citation</h2>
-          <pre className="bg-gray-50 p-3 rounded-xl overflow-x-auto text-sm"><code>@inproceedings{appforge2025,...}</code></pre>
+          <pre className="bg-gray-50 p-3 rounded-xl overflow-x-auto text-sm"><code>{`@inproceedings{appforge2025,...}`}</code></pre>
         </div>
       </section>
     </main>
