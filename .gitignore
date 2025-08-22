@@ -1,4 +1,13 @@
-.venv/
-site/
+# Node
+node_modules
+.next
+out
+dist
+*.log
+
+# Python
+__pycache__
+
+# OS
 .DS_Store
-__pycache__/
+Thumbs.db
