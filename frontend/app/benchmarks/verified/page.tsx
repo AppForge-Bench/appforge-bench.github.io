@@ -1,8 +1,4 @@
-'use client';
-import React from "react";
-import Section from "@/components/Section";
-
-const Page: React.FC = () => {
+export default function Page() {
   return (
     <main>
       <section className="bg-gray-50 border-b border-gray-200">
@@ -17,23 +13,20 @@ const Page: React.FC = () => {
         </div>
       </section>
 
-      <Section title="Overview">
-        <p>AppForge Verified overview text here. Replace with your real description next week.</p>
-      </Section>
-
-      <Section title="Resources">
-        <ul className="list-disc pl-5 space-y-1">
-          <li>Base dataset</li>
-          <li>Retrieval datasets</li>
-          <li>Model weights (optional)</li>
-        </ul>
-      </Section>
-
-      <Section title="Citation">
-        <pre className="bg-gray-50 p-3 rounded-xl overflow-x-auto text-sm"><code>@inproceedings{afbver2025,...}</code></pre>
-      </Section>
+      <section className="section">
+        <div className="container space-y-4">
+          <h2 className="h2">Overview</h2>
+          <p>Replace with real overview next week.</p>
+          <h2 className="h2">Resources</h2>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Base dataset</li>
+            <li>Retrieval datasets</li>
+            <li>Model weights (optional)</li>
+          </ul>
+          <h2 className="h2">Citation</h2>
+          <pre className="bg-gray-50 p-3 rounded-xl overflow-x-auto text-sm"><code>@inproceedings{appforge2025,...}</code></pre>
+        </div>
+      </section>
     </main>
   );
-};
-
-export default Page;
+}
