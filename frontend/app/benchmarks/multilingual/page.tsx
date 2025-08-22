@@ -1,7 +1,8 @@
-
+'use client';
+import React from "react";
 import Section from "@/components/Section";
 
-export default function Page(){
+const Page: React.FC = () => {
   return (
     <main>
       <section className="bg-gray-50 border-b border-gray-200">
@@ -33,4 +34,6 @@ export default function Page(){
       </Section>
     </main>
   );
-}
+};
+
+export default Page;

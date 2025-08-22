@@ -1,4 +1,5 @@
-
+'use client';
+import React from "react";
 import DatasetTabs from "@/components/DatasetTabs";
 import FilterBar from "@/components/FilterBar";
 import LeaderboardTable from "@/components/LeaderboardTable";
@@ -6,7 +7,7 @@ import Section from "@/components/Section";
 import news from "@/lib/data/news.json";
 import board from "@/lib/data/leaderboard.json";
 
-export default function Page(){
+const Page: React.FC = () => {
   return (
     <main>
       <section className="bg-gray-50 border-b border-gray-200">
@@ -45,4 +46,6 @@ export default function Page(){
       </Section>
     </main>
   );
-}
+};
+
+export default Page;
