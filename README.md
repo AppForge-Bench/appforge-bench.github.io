@@ -1,29 +1,11 @@
 
-# AppForge Bench (combined site)
+# AppForge Bench (fixed bundle)
 
-This repository structure mirrors SWE-bench's website pattern:
-- **Root** (`/`) serves a static **Leaderboards** site.
-- **Docs** live at **`/AppForge-Bench/`**, built with **Material for MkDocs**.
-
-## Quick: upload via GitHub web UI (no terminal)
-
-1. **Download the release ZIP produced by ChatGPT** and unzip it locally.
-2. Open your repo on GitHub: `https://github.com/AppForge-Bench/appforge-bench.github.io`
-3. Click **Add file ▸ Upload files**.
-4. **Drag-and-drop all unzipped files/folders** (not the ZIP itself) into the upload area.
-5. Scroll down, type a commit message like `feat: upload combined site`, choose **Commit directly to the main branch**, and **Commit changes**.
-6. Go to **Actions** tab, wait for **Build & Deploy (Next export + MkDocs)** to finish.
-7. Visit your site:
-   - Root: `https://appforge-bench.github.io/`
-   - Docs: `https://appforge-bench.github.io/AppForge-Bench/`
-
-## Local preview (optional; can be skipped)
-- Frontend: `cd frontend && npm install && npm run dev`
-- Docs: `pip install mkdocs-material && mkdocs serve`
-
-## Where to edit content later
-- Leaderboard data: `frontend/lib/data/leaderboard.json`
-- News: `frontend/lib/data/news.json`
-- Citations: `frontend/lib/data/citations.json`
-- Benchmarks text & links: `frontend/app/benchmarks/*/page.tsx`
-- Docs: `docs/` + `mkdocs.yml` (builds into `/AppForge-Bench/` automatically)
+Use these steps (web only):
+1) Delete any **docs-only** workflows under `.github/workflows/` (like `mkdocs.yml`, `deploy.yml`, etc.).
+2) Upload everything in this ZIP to the repo root (replace existing files).
+3) Go to **Settings ▸ Pages** → **Source: GitHub Actions**.
+4) Open **Actions** and run **Build & Deploy (Next export + MkDocs via Pages)**.
+5) Check:
+   - `https://appforge-bench.github.io/` (Leaderboards site)
+   - `https://appforge-bench.github.io/AppForge-Bench/` (Docs)
