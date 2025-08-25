@@ -7,9 +7,10 @@ export default function Page() {
   ];
   const shots = ["shot1.jpg","shot2.jpg","shot3.jpg","shot4.jpg"];
 
-  const gridStyle = { display: "grid", gridTemplateColumns: "160px repeat(4, 168px)", gap: "12px" };
-  const thumbWrapStyle = { width: "168px", height: "100px", borderRadius: "10px", border: "2px solid #e5e7eb", overflow: "hidden", background: "#fff" };
-  const imgStyle = { width: "100%", height: "100%", objectFit: "cover", display: "block" };
+  // Portrait-first layout: label column (160px) + 4 portrait cells (120px wide, 9:16)
+  const gridStyle = { display: "grid", gridTemplateColumns: "160px repeat(4, 120px)", gap: "12px" };
+  const thumbWrapStyle = { width: "120px", aspectRatio: "9 / 16", borderRadius: "10px", border: "2px solid #e5e7eb", overflow: "hidden", background: "#fff" };
+  const imgStyle = { width: "100%", height: "100%", objectFit: "contain", display: "block", background: "#f8fafc" };
 
   return (
     <main>
@@ -47,13 +48,12 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Demo: comparison grid with fixed-size thumbnails */}
+      {/* Demo: portrait comparison grid */}
       <section className="section">
         <div className="container space-y-4">
           <h2 className="h2">Demo</h2>
           <p className="text-gray-600">
-            Upload 12 screenshots to <code>frontend/public/demo/&lt;model&gt;/shot1.jpg..shot4.jpg</code>.
-            The gallery below enforces fixed-size thumbnails (168×100) so large images won't overflow.
+            Upload 12 screenshots to <code>frontend/public/demo/&lt;model&gt;/shot1.jpg..shot4.jpg</code> (portrait 9:16 recommended).
           </p>
 
           <div className="overflow-x-auto">
@@ -73,7 +73,7 @@ export default function Page() {
                     </div>
                   </div>
 
-                  {/* 4 thumbnails */}
+                  {/* 4 thumbnails (portrait) */}
                   {shots.map((s)=> (
                     <div key={m.key + '-' + s} style={thumbWrapStyle}>
                       <img
@@ -90,7 +90,7 @@ export default function Page() {
           </div>
 
           <div style={{ textAlign: "center", fontSize: "12px", color: "#6b7280", marginTop: "8px" }}>
-            Suggested original image size: ≥ 336×200. Thumbnails render at 168×100.
+            Suggested original image ratio: 9:16. Thumbnails are 120px wide and keep portrait orientation.
           </div>
         </div>
       </section>
