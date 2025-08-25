@@ -1,6 +1,7 @@
 
 'use client';
 import React, { useState } from "react";
+import Image from "next/image";
 import DatasetTabs from "@/components/DatasetTabs";
 import FilterBar from "@/components/FilterBar";
 import LeaderboardTable from "@/components/LeaderboardTable";
@@ -8,14 +9,23 @@ import Section from "@/components/Section";
 import news from "@/lib/data/news.json";
 import board from "@/lib/data/leaderboard.json";
 
+const brand = "#FF8A1F";
+
 export default function Page(){
   const [dataset, setDataset] = useState(board.datasets[0]);
   return (
     <main>
+      {/* Brand banner with icon */}
+      <section className="border-b" style={{background: brand}}>
+        <div className="container py-6 flex items-center gap-3 text-white">
+          <Image src="/assets/appforge-icon.jpg" alt="AppForge" width={36} height={36} className="rounded-md" />
+          <h1 className="text-2xl md:text-3xl font-semibold">Leaderboards</h1>
+        </div>
+      </section>
+
       <section className="bg-gray-50 border-b border-gray-200">
-        <div className="container py-10">
-          <h1 className="h1 mb-2">Leaderboards</h1>
-          <p className="text-gray-600">Compare systems on AppForge Bench variants. Replace this text with your own description.</p>
+        <div className="container py-6">
+          <p className="text-gray-700">Compare systems on AppForge Bench variants. Replace this text with your own description.</p>
           <div className="mt-4 flex flex-wrap gap-3 items-center">
             <DatasetTabs datasets={board.datasets} value={dataset} onChange={setDataset}/>
           </div>
