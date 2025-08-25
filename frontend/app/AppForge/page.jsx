@@ -43,31 +43,51 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Demo (3 x 4) */}
+      {/* Demo: comparison grid */}
       <section className="section">
         <div className="container space-y-4">
           <h2 className="h2">Demo</h2>
-          <p className="text-gray-600">Please upload the screenshots to <code>frontend/public/demo/&lt;model&gt;/shot1.jpg..shot4.jpg</code>. 3 models：deepseekv3、kimik2、qwen3coder.</p>
+          <p className="text-gray-600">
+            Comparison-style layout: the left column shows the model label and the next four columns show thumbnails.
+            Upload 12 screenshots to <code>frontend/public/demo/&lt;model&gt;/shot1.jpg..shot4.jpg</code>.
+          </p>
 
-          {/* 3 columns (models) x 4 shots */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {models.map((m) => (
-              <div key={m.key} className="space-y-3">
-                <div className="h3">{m.title}</div>
-                <div className="grid grid-cols-1 gap-3">
-                  {shots.map((s, i) => (
-                    <div key={i} className="card overflow-hidden">
+          {/* Header row */}
+          <div className="overflow-x-auto">
+            <div className="grid grid-cols-[160px_repeat(4,168px)] gap-3 md:gap-4">
+              <div></div>
+              {shots.map((s, i)=>(
+                <div key={s} className="text-center text-xs md:text-sm text-gray-500 pt-1">Shot {i+1}</div>
+              ))}
+
+              {models.map((m)=> (
+                <>
+                  {/* label cell */}
+                  <div key={m.key + '-label'} className="flex items-center justify-end pr-2">
+                    <div className="text-right">
+                      <div className="font-semibold">{m.title}</div>
+                      <div className="text-xs text-gray-500">LLM output screenshots</div>
+                    </div>
+                  </div>
+
+                  {/* 4 thumbnails */}
+                  {shots.map((s, i)=> (
+                    <div key={m.key + '-' + s} className="border-2 border-gray-200 rounded-lg overflow-hidden bg-white">
                       <img
                         src={`/demo/${m.key}/${s}`}
                         alt={`${m.title} ${s}`}
+                        className="w-[168px] h-[100px] object-cover block"
                         loading="lazy"
-                        className="w-full h-auto object-cover"
                       />
                     </div>
                   ))}
-                </div>
-              </div>
-            ))}
+                </>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center text-xs text-gray-500 mt-2">
+            Suggested original image size: ≥ 336×200. Thumbnails render at 168×100 for a compact comparison grid.
           </div>
         </div>
       </section>
