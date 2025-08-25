@@ -1,10 +1,11 @@
+
 import "./globals.css";
 import Link from "next/link";
 import { Github, Youtube, Twitter } from "lucide-react";
 
 export const metadata = {
   title: "AppForge Bench",
-  description: "AppForge Bench website, inspired by SWE-bench structure."
+  description: "AppForge Bench website."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -16,17 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="font-semibold text-lg">AppForge Bench</Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link className="nav-link" href="/">Leaderboards</Link>
-              <div className="relative group">
-                <button className="nav-link">Benchmarks ▾</button>
-                <div className="absolute hidden group-hover:block bg-white border border-gray-200 rounded-xl shadow-md mt-2 w-64 p-2">
-                  <Link className="nav-link block px-3 py-1.5" href="/benchmarks/appforge">AppForge Bench</Link>
-                  <Link className="nav-link block px-3 py-1.5" href="/benchmarks/lite">AppForge Bench Lite</Link>
-                  <Link className="nav-link block px-3 py-1.5" href="/benchmarks/multilingual">AppForge Bench Multilingual</Link>
-                  <Link className="nav-link block px-3 py-1.5" href="/benchmarks/multimodal">AppForge Bench Multimodal</Link>
-                  <Link className="nav-link block px-3 py-1.5" href="/benchmarks/bash-only">AppForge Bench Bash Only</Link>
-                  <Link className="nav-link block px-3 py-1.5" href="/benchmarks/verified">AppForge Verified</Link>
-                </div>
-              </div>
               <Link className="nav-link" href="/AppForge">AppForge</Link>
               <Link className="nav-link" href="/AppForge-Bench/">Docs</Link>
               <Link className="nav-link" href="/citations">Citations</Link>

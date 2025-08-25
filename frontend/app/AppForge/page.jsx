@@ -1,4 +1,12 @@
+
 export default function Page() {
+  const models = [
+    { key: "deepseekv3", title: "deepseekv3" },
+    { key: "kimik2", title: "kimik2" },
+    { key: "qwen3coder", title: "qwen3coder" }
+  ];
+  const shots = ["shot1.jpg","shot2.jpg","shot3.jpg","shot4.jpg"];
+
   return (
     <main>
       {/* Hero */}
@@ -8,46 +16,12 @@ export default function Page() {
           <p className="text-gray-700 max-w-3xl">
             AppForge Bench evaluates large language models on real-world app engineering tasks.
             Given a project repo and an issue, a model is asked to produce a patch that resolves the problem —
-            and we verify success with deterministic tests. (Layout inspired by SWE-bench.)
+            and we verify success with deterministic tests.
           </p>
           <div className="flex flex-wrap gap-2">
             <a className="btn" href="/">Open Leaderboards</a>
             <a className="btn" href="/analyze">Results Viewer</a>
             <a className="btn" href="/AppForge-Bench/">Docs</a>
-          </div>
-        </div>
-      </section>
-
-      {/* Variants grid */}
-      <section className="section">
-        <div className="container space-y-6">
-          <h2 className="h2">All of the Projects</h2>
-          <p className="text-gray-600">Explore benchmarks in the AppForge ecosystem.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <a href="/benchmarks/appforge" className="card p-4 hover:bg-gray-50 transition">
-              <div className="h3 mb-1">AppForge Bench</div>
-              <p className="text-sm text-gray-600">Full benchmark of real issues.</p>
-            </a>
-            <a href="/benchmarks/verified" className="card p-4 hover:bg-gray-50 transition">
-              <div className="h3 mb-1">AppForge Verified</div>
-              <p className="text-sm text-gray-600">Human-validated subset for reliable scoring.</p>
-            </a>
-            <a href="/benchmarks/lite" className="card p-4 hover:bg-gray-50 transition">
-              <div className="h3 mb-1">AppForge Lite</div>
-              <p className="text-sm text-gray-600">Cost-efficient subset for rapid iteration.</p>
-            </a>
-            <a href="/benchmarks/multimodal" className="card p-4 hover:bg-gray-50 transition">
-              <div className="h3 mb-1">AppForge Multimodal</div>
-              <p className="text-sm text-gray-600">Issues enriched with screenshots and visuals.</p>
-            </a>
-            <a href="/benchmarks/bash-only" className="card p-4 hover:bg-gray-50 transition">
-              <div className="h3 mb-1">AppForge Bash Only</div>
-              <p className="text-sm text-gray-600">Mini-agent environment for fast runs.</p>
-            </a>
-            <a href="/benchmarks/multilingual" className="card p-4 hover:bg-gray-50 transition">
-              <div className="h3 mb-1">AppForge Multilingual</div>
-              <p className="text-sm text-gray-600">Cross-language evaluation.</p>
-            </a>
           </div>
         </div>
       </section>
@@ -69,6 +43,35 @@ export default function Page() {
         </div>
       </section>
 
+      {/* Demo (3 x 4) */}
+      <section className="section">
+        <div className="container space-y-4">
+          <h2 className="h2">Demo</h2>
+          <p className="text-gray-600">Please upload the screenshots to <code>frontend/public/demo/&lt;model&gt;/shot1.jpg..shot4.jpg</code>. 3 models：deepseekv3、kimik2、qwen3coder.</p>
+
+          {/* 3 columns (models) x 4 shots */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {models.map((m) => (
+              <div key={m.key} className="space-y-3">
+                <div className="h3">{m.title}</div>
+                <div className="grid grid-cols-1 gap-3">
+                  {shots.map((s, i) => (
+                    <div key={i} className="card overflow-hidden">
+                      <img
+                        src={`/demo/${m.key}/${s}`}
+                        alt={`${m.title} ${s}`}
+                        loading="lazy"
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Resources */}
       <section className="section">
         <div className="container space-y-4">
@@ -79,30 +82,6 @@ export default function Page() {
             <li><a className="hover:underline" href="https://huggingface.co" target="_blank">Datasets on Hugging Face (placeholder)</a></li>
             <li><a className="hover:underline" href="/citations">Citations</a></li>
           </ul>
-        </div>
-      </section>
-
-      {/* Citation */}
-      <section className="section">
-        <div className="container space-y-3">
-          <h2 className="h2">Citation</h2>
-          <p className="text-gray-600">If you use AppForge Bench in your work, please cite:</p>
-          <pre className="bg-gray-50 p-3 rounded-xl overflow-x-auto text-sm">
-            <code>{`@inproceedings{{appforge2025,
-  title={{AppForge Bench}: Evaluating LLMs on Real-World App Tasks},
-  author={{Your Team}},
-  booktitle={{Conference}},
-  year={{2025}},
-  url={{https://appforge-bench.github.io}}
-}`}</code>
-          </pre>
-        </div>
-      </section>
-
-      {/* Footer CTA */}
-      <section className="section">
-        <div className="container">
-          <a className="btn" href="/">Back to Leaderboards</a>
         </div>
       </section>
     </main>
