@@ -7,6 +7,10 @@ export default function Page() {
   ];
   const shots = ["shot1.jpg","shot2.jpg","shot3.jpg","shot4.jpg"];
 
+  const gridStyle = { display: "grid", gridTemplateColumns: "160px repeat(4, 168px)", gap: "12px" };
+  const thumbWrapStyle = { width: "168px", height: "100px", borderRadius: "10px", border: "2px solid #e5e7eb", overflow: "hidden", background: "#fff" };
+  const imgStyle = { width: "100%", height: "100%", objectFit: "cover", display: "block" };
+
   return (
     <main>
       {/* Hero */}
@@ -43,40 +47,39 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Demo: comparison grid */}
+      {/* Demo: comparison grid with fixed-size thumbnails */}
       <section className="section">
         <div className="container space-y-4">
           <h2 className="h2">Demo</h2>
           <p className="text-gray-600">
-            Comparison-style layout: the left column shows the model label and the next four columns show thumbnails.
             Upload 12 screenshots to <code>frontend/public/demo/&lt;model&gt;/shot1.jpg..shot4.jpg</code>.
+            The gallery below enforces fixed-size thumbnails (168×100) so large images won't overflow.
           </p>
 
-          {/* Header row */}
           <div className="overflow-x-auto">
-            <div className="grid grid-cols-[160px_repeat(4,168px)] gap-3 md:gap-4">
+            <div style={gridStyle}>
               <div></div>
               {shots.map((s, i)=>(
-                <div key={s} className="text-center text-xs md:text-sm text-gray-500 pt-1">Shot {i+1}</div>
+                <div key={s} style={{ textAlign: "center", fontSize: "12px", color: "#6b7280", paddingTop: "4px" }}>Shot {i+1}</div>
               ))}
 
               {models.map((m)=> (
                 <>
                   {/* label cell */}
-                  <div key={m.key + '-label'} className="flex items-center justify-end pr-2">
-                    <div className="text-right">
-                      <div className="font-semibold">{m.title}</div>
-                      <div className="text-xs text-gray-500">LLM output screenshots</div>
+                  <div key={m.key + '-label'} style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: "8px" }}>
+                    <div style={{ textAlign: "right" }}>
+                      <div style={{ fontWeight: 600 }}>{m.title}</div>
+                      <div style={{ fontSize: "12px", color: "#6b7280" }}>LLM output screenshots</div>
                     </div>
                   </div>
 
                   {/* 4 thumbnails */}
-                  {shots.map((s, i)=> (
-                    <div key={m.key + '-' + s} className="border-2 border-gray-200 rounded-lg overflow-hidden bg-white">
+                  {shots.map((s)=> (
+                    <div key={m.key + '-' + s} style={thumbWrapStyle}>
                       <img
                         src={`/demo/${m.key}/${s}`}
                         alt={`${m.title} ${s}`}
-                        className="w-[168px] h-[100px] object-cover block"
+                        style={imgStyle}
                         loading="lazy"
                       />
                     </div>
@@ -86,8 +89,8 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="text-center text-xs text-gray-500 mt-2">
-            Suggested original image size: ≥ 336×200. Thumbnails render at 168×100 for a compact comparison grid.
+          <div style={{ textAlign: "center", fontSize: "12px", color: "#6b7280", marginTop: "8px" }}>
+            Suggested original image size: ≥ 336×200. Thumbnails render at 168×100.
           </div>
         </div>
       </section>
