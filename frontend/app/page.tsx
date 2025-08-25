@@ -1,5 +1,6 @@
+
 'use client';
-import React from "react";
+import React, { useState } from "react";
 import DatasetTabs from "@/components/DatasetTabs";
 import FilterBar from "@/components/FilterBar";
 import LeaderboardTable from "@/components/LeaderboardTable";
@@ -7,7 +8,8 @@ import Section from "@/components/Section";
 import news from "@/lib/data/news.json";
 import board from "@/lib/data/leaderboard.json";
 
-const Page: React.FC = () => {
+export default function Page(){
+  const [dataset, setDataset] = useState(board.datasets[0]);
   return (
     <main>
       <section className="bg-gray-50 border-b border-gray-200">
@@ -15,7 +17,7 @@ const Page: React.FC = () => {
           <h1 className="h1 mb-2">Leaderboards</h1>
           <p className="text-gray-600">Compare systems on AppForge Bench variants. Replace this text with your own description.</p>
           <div className="mt-4 flex flex-wrap gap-3 items-center">
-            <DatasetTabs datasets={board.datasets}/>
+            <DatasetTabs datasets={board.datasets} value={dataset} onChange={setDataset}/>
           </div>
           <div className="mt-4"><FilterBar scaffold={board.filters.scaffold} tags={board.filters.tags}/></div>
         </div>
@@ -23,7 +25,7 @@ const Page: React.FC = () => {
 
       <section className="section">
         <div className="container space-y-6">
-          <LeaderboardTable rows={board.rows as any}/>
+          <LeaderboardTable rows={board.rows as any} selectedDataset={dataset}/>
           <div className="flex justify-end">
             <a className="btn" href="/analyze">Analyze Results in Detail</a>
           </div>
@@ -46,6 +48,4 @@ const Page: React.FC = () => {
       </Section>
     </main>
   );
-};
-
-export default Page;
+}
