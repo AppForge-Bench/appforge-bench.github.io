@@ -1,4 +1,6 @@
 
+import Image from "next/image";
+
 export default function Page() {
   const models = [
     { key: "deepseekv3", title: "deepseekv3" },
@@ -7,7 +9,7 @@ export default function Page() {
   ];
   const shots = ["shot1.jpg","shot2.jpg","shot3.jpg","shot4.jpg"];
 
-  // Portrait-first layout: label column (160px) + 4 portrait cells (120px wide, 9:16)
+  // Portrait-first layout
   const gridStyle = { display: "grid", gridTemplateColumns: "160px repeat(4, 120px)", gap: "12px" };
   const thumbWrapStyle = { width: "120px", aspectRatio: "9 / 16", borderRadius: "10px", border: "2px solid #e5e7eb", overflow: "hidden", background: "#fff" };
   const imgStyle = { width: "100%", height: "100%", objectFit: "contain", display: "block", background: "#f8fafc" };
@@ -17,16 +19,28 @@ export default function Page() {
       {/* Hero */}
       <section className="bg-gray-50 border-b border-gray-200">
         <div className="container py-12 space-y-4">
-          <h1 className="h1">AppForge Bench</h1>
-          <p className="text-gray-700 max-w-3xl">
-            AppForge Bench evaluates large language models on real-world app engineering tasks.
-            Given a project repo and an issue, a model is asked to produce a patch that resolves the problem —
-            and we verify success with deterministic tests.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <a className="btn" href="/">Open Leaderboards</a>
-            <a className="btn" href="/analyze">Results Viewer</a>
-            <a className="btn" href="/AppForge-Bench/">Docs</a>
+          <div className="flex items-start gap-5">
+            <Image
+              src="/assets/appforge-icon.jpg"
+              alt="AppForge icon"
+              width={96}
+              height={96}
+              className="rounded-2xl shadow-sm ring-1 ring-black/5"
+              priority
+            />
+            <div className="space-y-3">
+              <h1 className="h1">AppForge Bench</h1>
+              <p className="text-gray-700 max-w-3xl">
+                AppForge Bench evaluates large language models on real-world app engineering tasks.
+                Given a project repo and an issue, a model is asked to produce a patch that resolves the problem —
+                and we verify success with deterministic tests.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <a className="btn" href="/">Open Leaderboards</a>
+                <a className="btn" href="/analyze">Results Viewer</a>
+                <a className="btn" href="/AppForge-Bench/">Docs</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
