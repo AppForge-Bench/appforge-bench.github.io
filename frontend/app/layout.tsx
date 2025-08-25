@@ -1,4 +1,3 @@
-
 import "./globals.css";
 import Link from "next/link";
 import { Github, Youtube, Twitter } from "lucide-react";
@@ -28,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Link className="nav-link block px-3 py-1.5" href="/benchmarks/verified">AppForge Verified</Link>
                 </div>
               </div>
+              <Link className="nav-link" href="/AppForge">AppForge</Link>
               <Link className="nav-link" href="/AppForge-Bench/">Docs</Link>
               <Link className="nav-link" href="/citations">Citations</Link>
               <Link className="nav-link" href="/press">Press</Link>
